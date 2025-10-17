@@ -1,11 +1,19 @@
 from playwright.sync_api import Page, expect, BrowserType
 from tests.utils.constants import BASE_URL
+import os
 
 
 # to slow things down
-def test_headless_and_slow_mo(browser_type: BrowserType):    
-    browser = browser_type.launch(headless=True, slow_mo=2000)
+
+def test_headless_and_slow_mo(browser_type: BrowserType):
+    headless = os.getenv("HEADLESS", "true").lower() == "true"
+    slow_mo = int(os.getenv("SLOW_MO", "0"))
+    browser = browser_type.launch(headless=headless, slow_mo=slow_mo)
     page = browser.new_page()
+
+#def test_headless_and_slow_mo(browser_type: BrowserType):    
+#    browser = browser_type.launch(headless=True, slow_mo=2000)
+#    page = browser.new_page()
 
 
 def test_recommended_locators(page: Page):
