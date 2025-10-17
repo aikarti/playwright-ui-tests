@@ -19,6 +19,6 @@ def test_recommended_locators(page: Page):
 def test_warningmessage_on_fields(page: Page):
     page.goto(BASE_URL)
     page.get_by_role("button", name="Register", exact=True).click()
-    expect(page.get_by_text("Valid first name is required")).to_be_visible()
-    expect(page.get_by_text("Valid last name is required")).to_be_visible()
-    expect(page.get_by_text("Email is required")).to_be_visible()
+    expect(page.get_by_text("Valid first name is required")).to_be_visible(), "First name warning message is not visible"
+    expect(page.get_by_text("Valid last name is required")).to_be_visible(), "Last name warning message is not visible"
+    expect(page.get_by_text("Please enter a valid email address")).to_be_visible(), "Email warning message is not visible"
