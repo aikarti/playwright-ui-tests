@@ -27,5 +27,5 @@ jobs:
 
     - name: Run Playwright tests
       run: |
-        pytest --headed=false tests/m3_locators/test_locators_recommended.py
+        pytest tests/m3_locators/test_locators_recommended.py
       
