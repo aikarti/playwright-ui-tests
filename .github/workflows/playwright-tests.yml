@@ -30,7 +30,5 @@ jobs:
       env:
         HEADLESS: true
         SLOW_MO: 0
-      run: pytest tests/m3_locators/test_locators_recommended.py
-      env:
-        HEADLESS: true
-        SLOW_MO: 0
+     
+
