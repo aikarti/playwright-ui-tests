@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: start local server
+      run: |
+        python -m http.server 3000 &
+        sleep 10
     - name: Checkout code
       uses: actions/checkout@v3
 
