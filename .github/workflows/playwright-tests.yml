@@ -24,8 +24,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         playwright install
-
-    - name: Run Playwright tests
+    
+    - name: Run Playwright tests in headless mode
       run: |
         pytest tests/m3_locators/test_locators_recommended.py
-      
+      env:
+        HEADLESS: true
+        SLOW_MO: 0
