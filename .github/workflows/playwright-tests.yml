@@ -15,8 +15,8 @@ jobs:
       run: |
         python -m http.server 3000 &
         sleep 10
-      working-directory: ./web
-
+      working-directory: trainingone/web
+    
     - name: Checkout code
       uses: actions/checkout@v3
 
