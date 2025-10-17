@@ -1,3 +1,15 @@
+# Playwright UI Tests
+
+This repository contains automated UI tests using https://playwright.dev/ and https://docs.pytest.org/.
+
+## 📦 Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/aikarti/playwright-ui-tests.git
+   cd playwright-ui-tests
+   
+
 ## Demo code for my Pluralsight course: Playwright Foundations with Python
 
 Starting a new end-to-end test automation project? This course will teach you how to test web applications using the open-source tool Playwright with Python. Try it and never look back!
