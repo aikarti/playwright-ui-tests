@@ -33,7 +33,7 @@ def test_warningmessage_on_fields(page: Page):
     expect(page.get_by_text("Please enter a valid email address")).to_be_visible(), "Email warning message is not visible"
 
 def test_page_refresh_after_registration(page: Page):
-    page.goto(BASE_URL)
+    page.goto("http://localhost:3000/?")
     page.get_by_label("First name").fill("Karthick")
     page.get_by_label("Last name").fill("Murugan")
     page.get_by_label("Email").fill("abc@example.com")
