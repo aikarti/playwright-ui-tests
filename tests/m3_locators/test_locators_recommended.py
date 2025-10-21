@@ -31,3 +31,11 @@ def test_warningmessage_on_fields(page: Page):
     expect(page.get_by_text("Valid first name is required")).to_be_visible(), "First name warning message is not visible"
     expect(page.get_by_text("Valid last name is required")).to_be_visible(), "Last name warning message is not visible"
     expect(page.get_by_text("Please enter a valid email address")).to_be_visible(), "Email warning message is not visible"
+
+def test_page_refresh_after_registration(page: Page):
+    page.goto(BASE_URL)
+    page.get_by_label("First name").fill("Karthick")
+    page.get_by_label("Last name").fill("Murugan")
+    page.get_by_label("Email").fill("abc@example.com")
+    page.get_by_role("button", name="Register", exact=True).click()
+    expect(page).to_have_url("http://localhost:3000/?", timeout=5000), "Page did not refresh to the original URL"
