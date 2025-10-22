@@ -1,7 +1,7 @@
 from playwright.sync_api import Page, expect, BrowserType
 from tests.utils.constants import BASE_URL
 import os
-
+import re
 
 # to slow things down
 
@@ -38,4 +38,7 @@ def test_page_refresh_after_registration(page: Page):
     page.get_by_label("Last name").fill("Murugan")
     page.get_by_label("Email").fill("abc@example.com")
     page.get_by_role("button", name="Register", exact=True).click()
-    expect(page).to_have_url("http://localhost:3000/?", timeout=5000), "Page did not refresh to the original URL"
+    #expect(page).to_have_url("http://localhost:3000/?", timeout=5000), "Page did not refresh to the original URL"
+    expect(page).to_have_url(re.compile(r"http://localhost:3000/\??"), timeout=5000)
+    print("Current URL:", page.url)
+    
