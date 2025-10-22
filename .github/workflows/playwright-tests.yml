@@ -23,16 +23,31 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install pytest-html allure-pytest
         playwright install
+
     - name: Start local server
       run: |
         python -m http.server 3000 &
         sleep 10
       working-directory: web
 
-    - name: Run Playwright tests in headless mode
-      run: pytest tests/m3_locators/test_locators_recommended.py
+    - name: Run Playwright tests with HTML and Allure reports
+      run: |
+        mkdir -p allure-results html-report
+        pytest \
+          tests/m3_locators/test_locators_recommended.py \
+          tests/m4_basic_actions/test_check.py \
+          --html=html-report/index.html \
+          --self-contained-html \
+          --alluredir=allure-results
       env:
         HEADLESS: true
         SLOW_MO: 0
-        
+
+    - name: Deploy HTML report to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: html-report
+        publish_branch: gh-pages
