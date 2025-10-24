@@ -38,6 +38,7 @@ jobs:
         pytest \
           tests/m3_locators/test_locators_recommended.py \
           tests/m4_basic_actions/test_check.py \
+          tests/m5_advanced_actions/test_dialogs.py \
           --html=html-report/index.html \
           --self-contained-html \
           --alluredir=allure-results
